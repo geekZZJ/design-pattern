@@ -1,4 +1,4 @@
-// 观察者模式
+// 外观模式
 function bindEvent(elem, type, selector, fn) {
   if (fn === null) {
     fn = selector;
