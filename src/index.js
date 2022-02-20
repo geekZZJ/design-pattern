@@ -1,1 +1,1 @@
-import "./state"
+import "./myPromise"
