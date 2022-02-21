@@ -1,1 +1,1 @@
-import "./myPromise"
+import "./proto"
