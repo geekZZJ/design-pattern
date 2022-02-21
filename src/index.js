@@ -1,1 +1,1 @@
-import "./proto"
+import "./strategy";
