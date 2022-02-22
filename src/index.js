@@ -1,1 +1,1 @@
-import "./cor";
+import "./command";
