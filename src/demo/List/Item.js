@@ -26,7 +26,7 @@ class Item {
 
     const fsm = new StateMachine({
       init: "加入购物车",
-      transition: [
+      transitions: [
         {
           name: "add",
           from: "加入购物车",
@@ -39,11 +39,11 @@ class Item {
         }
       ],
       methods: {
-        add: () => {
+        onAdd: () => {
           this.addToCartHandle();
           updateText();
         },
-        del: () => {
+        onDel: () => {
           this.deleteFromCartHandle();
           updateText();
         }

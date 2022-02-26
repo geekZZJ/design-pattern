@@ -8,7 +8,7 @@ class Cart {
   }
 
   del(id) {
-    this.list = this.list.filter(item.id !== id);
+    this.list = this.list.filter(item => item.id !== id);
   }
 
   getList() {
@@ -28,4 +28,4 @@ const getCart = (function () {
   };
 })();
 
-export default getCart
+export default getCart;
