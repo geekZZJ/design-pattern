@@ -1,6 +1,6 @@
 import $ from "jquery";
 import getCart from "../ShoppingCart/GetCart";
-
+import StateMachine from "javascript-state-machine";
 
 class Item {
   constructor(list, data) {
@@ -22,12 +22,48 @@ class Item {
   }
 
   initBtn() {
-    const $btn = $("<button>test</button>");
+    const $btn = $("<button>");
+
+    const fsm = new StateMachine({
+      init: "加入购物车",
+      transition: [
+        {
+          name: "add",
+          from: "加入购物车",
+          to: "从购物车删除"
+        },
+        {
+          name: "del",
+          from: "从购物车删除",
+          to: "加入购物车"
+        }
+      ],
+      methods: {
+        add: () => {
+          this.addToCartHandle();
+          updateText();
+        },
+        del: () => {
+          this.deleteFromCartHandle();
+          updateText();
+        }
+      }
+    });
+
+    function updateText() {
+      $btn.text(fsm.state);
+    }
+
 
     $btn.click(() => {
-      // 添加到购物车
-      // 从购物车移除
+      if (fsm.is("加入购物车")) {
+        fsm.add();
+      } else {
+        fsm.del();
+      }
     });
+
+    updateText();
     this.$el.append($btn);
   }
 
